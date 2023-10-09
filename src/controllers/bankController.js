@@ -1,37 +1,50 @@
 import * as db from "../../db/index.js";
+import * as financeService from "../services/financeService.js";
+import * as bankService from "../services/bankService.js";
 
-export async function getBanks(req, res) {
-    try {
-        const result = await db.query("SELECT * FROM banks");
-        res.send(result.rows);
-    } catch (err) {
-        console.log(err);
-    }
+export async function getAllBanks(req, res) {
+  try {
+    const result = await db.query("SELECT * FROM banks");
+    res.send(result.rows);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
 }
 
-export async function getBank(req, res) {
-    const id = req.params.id;
-    try {
-        const bank = await db.query("SELECT * FROM banks WHERE id = $1", [id]);
-        res.send(bank.rows[0]);
-    } catch (err) {
-        console.log(err)
+export async function getBankById(req, res) {
+  const bankId = req.params.id;
+  try {
+    const bankData = await bankService.getBankById(bankId);
+    if (!bankData) {
+      res.status(404).send("Banco não encontrado");
     }
+    res.send(bankData);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
 }
 
 export async function calculaAutoLoan(req, res) {
-    //http://localhost:3000/banks/finance?id=1&principal=4&months=4
-    const id = req.params.id;
-    const principal = req.params.principal;
-    const months = req.params.months;
-    try {
-        const interest = await db.query("SELECT anual_interest_rate FROM banks WHERE id = $1", [id]);
-        res.send({
-            "interest": interest.rows[0],
-            "principal": principal,
-            "months": months
-        });
-    } catch (err) {
-        console.log(err)
-    }
+  const { bankId, loanPrincipal, loanTermMonths } = req.body;
+
+  try {
+    const bankData = await bankService.getBankById(bankId);
+    const { anual_interest_rate, max_installments } = bankData;
+    const monthlyInterestRate =
+      financeService.calcMonthlyInterest(anual_interest_rate);
+
+    financeService.validateLoanTerm(loanTermMonths, max_installments);
+
+    const monthlyInstallmentAmount = financeService.calcMonthlyInstallment(
+      loanPrincipal,
+      monthlyInterestRate,
+      loanTermMonths
+    );
+
+    const totalLoanCost = monthlyInstallmentAmount * loanTermMonths;
+
+    res.send({ monthlyInstallmentAmount, totalLoanCost });
+  } catch (err) {
+    res.status(405).send(err.message);
+  }
 }
