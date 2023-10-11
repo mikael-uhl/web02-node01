@@ -14,3 +14,14 @@ export function validateLoanTerm(loanTermMonths, maxInstallments) {
     );
   }
 }
+
+export function validateNumbers(numbers) {
+  let result = true;
+  numbers.forEach(number => {
+    number = parseInt(number);
+    if(isNaN(number)) {
+      result = false;
+    }
+  });
+  return result;
+}
