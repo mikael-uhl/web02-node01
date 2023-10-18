@@ -34,13 +34,13 @@ form.addEventListener("submit", async (e) => {
                                 <p>Financiamento em ${loanTermMonths} meses.</p>`;
         } else {
             const message = await response.json();
-            result.innerHTML = message.error;
+            result.innerHTML = message;
         }
     } catch (err) {
-        result.innerHTML = `Erro ${err}`
+        result.innerHTML = err.message;
     }
 })
 
 function toMoney(number) {
-    return `R$ ${number.toFixed(2)}`
+    return number.toLocaleString("pt-BR", {style:"currency", currency:"BRL"})
 }

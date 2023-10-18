@@ -4,9 +4,9 @@ import * as bankService from "../services/bankService.js";
 export async function getAllBanks(req, res) {
   try {
     const banks = await bankService.getAllBanks();
-    res.status(200).send(banks);
+    res.status(200).json(banks);
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).json(err.message);
   }
 }
 
@@ -18,11 +18,11 @@ export async function getBankById(req, res) {
     }
     const bankData = await bankService.getBankById(bankId);
     if (!bankData) {
-      res.status(404).send("Banco não encontrado");
+      res.status(404).json("Banco não encontrado");
     }
-    res.status(200).send(bankData);
+    res.status(200).json(bankData);
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).json(err.message);
   }
 }
 
@@ -52,8 +52,8 @@ export async function calculaAutoLoan(req, res) {
 
     const totalLoanCost = monthlyInstallmentAmount * loanTermMonths;
 
-    res.status(200).send({ monthlyInstallmentAmount, totalLoanCost });
+    res.status(200).json({ monthlyInstallmentAmount, totalLoanCost });
   } catch (err) {
-    res.status(405).send(err.message);
+    res.status(405).json(err.message);
   }
 }

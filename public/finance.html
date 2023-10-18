@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Finance</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Finance</h1>
-    <form id="form">
-        <label for="loanPrincipal">Valor</label>
-        <input type="number" name="loanPrincipal" id="loanPrincipal">
-        
-        <label for="idBank">Selecione o banco</label>
-        <select name="bankId" id="bankId"></select>
+    <div class="container">
+        <div class="text_container">
+            <h1>Simule o seu <span>financiamento</span>.</h1>
+            <p>Escolha as melhores condições para o financiamento do seu veículo.</p>
+            <img src="img/carrao.png" alt="Carro do Saci Pererê">
+        </div>
+        <div class="form_container">
+            <p><img src="img/emoji.png" alt="Money emoji"><br>
+                Preencha os campos e simule o seu financiamento.</p>
+            <form id="form">
+                <label for="loanPrincipal">Valor</label>
+                <input type="number" name="loanPrincipal" id="loanPrincipal" placeholder="Valor">
 
-        <label for="loanTermMonths">Em quantos meses?</label>
-        <input type="number" name="loanTermMonths" id="loanTermMonths">
+                <label for="idBank">Selecione o banco</label>
+                <select name="bankId" id="bankId">
+                    <option>Selecione um banco</option>
+                </select>
 
-        <button type="submit">Simular financiamento</button>
-    </form>
+                <label for="loanTermMonths">Em quantos meses?</label>
+                <input type="number" name="loanTermMonths" id="loanTermMonths" placeholder="Em quantos meses?">
+
+                <button type="submit">Simular financiamento</button>
+            </form>
+        </div>
+    </div>
+
     <div id="result"></div>
 </body>
 <script src="script.js"></script>
+
 </html>

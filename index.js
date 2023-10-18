@@ -20,8 +20,6 @@ app.post("/finance", bankController.calculaAutoLoan);
 
 app.get("/finance", (req, res) => res.sendFile(path.join(__dirname, "public", "finance.html")));
 
-app.get("/favicon.ico", (req, res) => res.sendStatus(204));
-
 const port = 3000;
 
 app.listen(port, () => console.log("Servidor escutando em http://localhost:" + port));
