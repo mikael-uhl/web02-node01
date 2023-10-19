@@ -8,14 +8,19 @@ export function calcMonthlyInstallment(loanPrincipal, monthlyInterestRate, loanT
   }
 
 export function validateLoanTerm(loanTermMonths, maxInstallments) {
+  if (!isPositive(loanTermMonths)) {
+    throw new Error(
+      "A quantidade de meses não pode ser menor que 1."
+    )
+  }
   if (loanTermMonths > maxInstallments) {
     throw new Error(
-      `Limite de prazo excedido: O banco escolhido não oferece financiamento por mais de ${maxInstallments} meses`
+      `Limite de prazo excedido: O banco escolhido não oferece financiamento por mais de ${maxInstallments} meses.`
     );
   }
 }
 
-export function validateNumbers(numbers) {
+export function isNumber(numbers) {
   let result = true;
   numbers.forEach(number => {
     number = parseInt(number);
@@ -24,4 +29,8 @@ export function validateNumbers(numbers) {
     }
   });
   return result;
+}
+
+export function isPositive(number){
+  return number > 0;
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 body,
 html {
     margin: 0;
@@ -13,6 +15,12 @@ html {
     width: 100%;
 }
 
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
 .text_container {
     display: flex;
     flex-direction: column;
@@ -23,12 +31,15 @@ html {
 }
 
 .text_container h1 {
-    font-family: Inter;
-    font-size: 64px;
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
     font-weight: 600;
-    line-height: 64px;
+    line-height: 48px;
     letter-spacing: -0.03em;
     text-align: left;
+    width: 365px;
+    margin: 0;
+    padding: 0;
 }
 
 .text_container h1 span {
@@ -36,16 +47,65 @@ html {
 }
 
 .text_container p {
-    font-family: Inter;
-    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 21px;
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0em;
     text-align: left;
+    color: #939393;
+    width: 365px;
 }
 
 .text_container img {
-    width: 595px;
+    width: 395px;
+    margin-top: 30px;
+}
+
+.text_container .currency {
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: #4E4E4E;
+    margin: 15px 0;
+}
+
+.text_container .currency_label {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #939393;
+}
+
+.text_container .rights {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #4E4E4E;
+}
+
+.text_container .months_label {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #939393;
+}
+
+.text_container .months_label span {
+    color: #20C982;
+    font-style: normal;
 }
 
 .form_container {
@@ -59,7 +119,7 @@ html {
 }
 
 .form_container p {
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 28px;
@@ -84,7 +144,7 @@ html {
     border-radius: 7px;
     border: 1px solid #D9D9D9;
     background-color: #ffff;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 22px;
@@ -94,12 +154,17 @@ html {
     box-sizing: border-box;
 }
 
+.form_container form input:focus,
+.form_container form select:focus {
+    outline: 3px solid #20C982;
+}
+
 .form_container form button {
     width: 384px;
     height: 64px;
     border-radius: 7px;
     background-color: #20C982;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 500;
     line-height: 34px;
@@ -109,4 +174,81 @@ html {
     box-sizing: border-box;
     border: none;
     outline: none;
+}
+
+.img_container {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    background-image: url(img/birdbox.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.back_butt {
+    width: 384px;
+    height: 64px;
+    border-radius: 7px;
+    border: 1px solid #20C982;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0em;
+    color: #20C982;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+.symbol {
+    color: #20C97C;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 50px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.result {
+    position: absolute;
+    padding: 0 40px;
+    height: 100px;
+    bottom: 5%;
+    left: 25%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    font-family: 'Inter', sans-serif;
+    color: #950000;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #95000071;
+}
+
+.inactive {
+    display: none;
 }

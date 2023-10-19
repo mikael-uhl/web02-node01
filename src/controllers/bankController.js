@@ -33,7 +33,10 @@ export async function calculaAutoLoan(req, res) {
     if (!(bankId && loanPrincipal && loanTermMonths)) {
       throw new Error("Um ou mais campos não preenchidos.");
     }
-    if(!financeService.validateNumbers([bankId, loanPrincipal, loanTermMonths])) {
+    if (!financeService.isPositive(loanPrincipal)) {
+      throw new Error("O valor de financiamento deve ser positivo.")
+    }
+    if(!financeService.isNumber([bankId, loanPrincipal, loanTermMonths])) {
       throw new Error("Um ou mais campos não é número.");
     }
     

@@ -9,25 +9,27 @@
 </head>
 
 <body>
-    <div class="container">
+    <img src="img/logo.png" alt="Logotipo Finance" class="logo">
+    <div class="symbol">></div>
+    <div class="container" id="input_screen">
         <div class="text_container">
             <h1>Simule o seu <span>financiamento</span>.</h1>
-            <p>Escolha as melhores condições para o financiamento do seu veículo.</p>
+            <p>Escolha as melhores condições para o financiamento do seu carango.</p>
             <img src="img/carrao.png" alt="Carro do Saci Pererê">
         </div>
         <div class="form_container">
             <p><img src="img/emoji.png" alt="Money emoji"><br>
                 Preencha os campos e simule o seu financiamento.</p>
             <form id="form">
-                <label for="loanPrincipal">Valor</label>
-                <input type="number" name="loanPrincipal" id="loanPrincipal" placeholder="Valor">
+                <!-- <label for="loanPrincipal">Valor</label> -->
+                <input type="number" step="any" name="loanPrincipal" id="loanPrincipal" placeholder="Valor">
 
-                <label for="idBank">Selecione o banco</label>
+                <!-- <label for="bankId">Selecione o banco</label> -->
                 <select name="bankId" id="bankId">
-                    <option>Selecione um banco</option>
+                    <option disabled selected value="">Selecione um banco</option>
                 </select>
 
-                <label for="loanTermMonths">Em quantos meses?</label>
+                <!-- <label for="loanTermMonths">Em quantos meses?</label> -->
                 <input type="number" name="loanTermMonths" id="loanTermMonths" placeholder="Em quantos meses?">
 
                 <button type="submit">Simular financiamento</button>
@@ -35,7 +37,20 @@
         </div>
     </div>
 
-    <div id="result"></div>
+    <div class="container inactive" id="result_screen">
+        <div class="text_container">
+            <p class="currency_label">Valor das suas parcelas:</p>
+            <p id="monthlyInstallmentAmount" class="currency"></p>
+            <p class="currency_label">Valor final a pagar:</p>
+            <p id="totalLoanCost" class="currency"></p>
+            <p id="monthsQtt" class="months_label"></p>
+            <button class="back_butt" id="back_butt">Voltar ao simulador</button>
+            <p class="rights">© Todos os direitos reservados.</p>
+        </div>
+        <div class="img_container"></div>
+    </div>
+
+    <div id="result" class="result inactive"></div>
 </body>
 <script src="script.js"></script>
 
